@@ -1,4 +1,4 @@
-from modules.ui import *
+from modules.ui import start_ui
 
 def main():
     start_ui()
