@@ -8,12 +8,11 @@ def start_listening(text_box):
     thread.start()
 
 def recognition_handler(text_box):
-    print("yo")
+    text_box.delete("0.0", "end")
     with sr.Microphone() as source:
         try:
-            text_box.insert("end", "Listening...")
             audio = recogniser.listen(source, timeout = 3)
-            text = recogniser.recognize_google(audio, language = "sl-SI")
+            text = recogniser.recognize_google(audio)
             text_box.insert("end", text)
         except sr.WaitTimeoutError:
             text_box.insert("end", "No input")
