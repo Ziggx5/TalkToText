@@ -17,4 +17,5 @@ def image_loader_handler():
         file_path = os.path.join(images_path, file_name)
         open_image = Image.open(file_path)
         images[file_name] = CTkImage(light_image = open_image, dark_image = open_image, size = (15, 15))
+    
     return images
