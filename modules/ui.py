@@ -14,10 +14,10 @@ def start_ui():
     text_box = CTkTextbox(app, width = 300, height = 200)
     text_box.place(x = 10, y = 50)
     
-    start_button = CTkButton(app, text = "Start", fg_color = "#3d3d3d", corner_radius = 5, image = images["start.png"], compound = "left", command = lambda: start_listening(text_box))
+    start_button = CTkButton(app, text = "Start", fg_color = "#3d3d3d", corner_radius = 5, image = images["start.png"], compound = "left", command = lambda: start_listening(text_box, start_button))
     start_button.place(x = 10, y = 10)
 
-    stop_button = CTkButton(app, text = "Stop", fg_color = "#3d3d3d", corner_radius = 5, image = images["stop.png"], compound = "left", command = lambda: stop_listening())
+    stop_button = CTkButton(app, text = "Stop", fg_color = "#3d3d3d", corner_radius = 5, image = images["stop.png"], compound = "left", command = lambda: stop_listening(start_button))
     stop_button.place(x = 160, y = 10)
 
     app.mainloop()
