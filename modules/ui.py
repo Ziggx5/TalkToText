@@ -1,5 +1,5 @@
 from customtkinter import *
-from modules.speech_recognition import start_listening
+from modules.speech_recognition import start_listening, stop_listening
 from modules.image_loader import image_loader_handler
 import os
 
@@ -17,7 +17,7 @@ def start_ui():
     start_button = CTkButton(app, text = "Start", fg_color = "#3d3d3d", corner_radius = 5, image = images["start.png"], compound = "left", command = lambda: start_listening(text_box))
     start_button.place(x = 10, y = 10)
 
-    stop_button = CTkButton(app, text = "Stop", fg_color = "#3d3d3d", corner_radius = 5, image = images["stop.png"], compound = "left")
+    stop_button = CTkButton(app, text = "Stop", fg_color = "#3d3d3d", corner_radius = 5, image = images["stop.png"], compound = "left", command = lambda: stop_listening())
     stop_button.place(x = 160, y = 10)
 
     app.mainloop()
