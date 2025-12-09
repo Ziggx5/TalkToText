@@ -1,6 +1,7 @@
 from customtkinter import *
 from modules.speech_recognition import start_listening, stop_listening
 from modules.image_loader import image_loader_handler
+from modules.copy_logic import copy_to_clipboard
 import os
 
 def start_ui():
@@ -20,7 +21,7 @@ def start_ui():
     stop_button = CTkButton(app, text = "Stop", fg_color = "#3d3d3d", corner_radius = 5, image = images["stop.png"], compound = "left", width = 150, hover_color= "gray", command = lambda: stop_listening(start_button))
     stop_button.place(x = 330, y = 50)
 
-    clear_button = CTkButton(app, text = "Clear", fg_color = "#3d3d3d", corner_radius = 5, image = images["clear.png"], compound = "left", width = 150, hover_color= "gray", command = lambda: text_box.delete("0.0", "end"))
+    clear_button = CTkButton(app, text = "Copy", fg_color = "#3d3d3d", corner_radius = 5, image = images["copy.png"], compound = "left", width = 150, hover_color= "gray", command = lambda: copy_to_clipboard(app, text_box))
     clear_button.place(x = 330, y = 90)
 
     app.mainloop()

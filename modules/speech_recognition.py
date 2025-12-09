@@ -19,7 +19,7 @@ def recognition_handler(text_box, start_button):
         while listening:
             try:
                 audio = recogniser.listen(source)
-                text = recogniser.recognize_google(audio, language="sl-SI")
+                text = recogniser.recognize_google(audio)
                 if text != last_text:
                     text_box.insert("end", f" {text}")
                     last_text = text
