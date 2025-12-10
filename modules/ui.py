@@ -1,7 +1,8 @@
 from customtkinter import *
 from modules.speech_recognition import start_listening, stop_listening
-from modules.image_loader import image_loader_handler
+from modules.file_loader import image_loader_handler
 from modules.copy_logic import copy_to_clipboard
+from PIL import *
 import os
 
 def start_ui():
