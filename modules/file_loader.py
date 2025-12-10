@@ -24,3 +24,11 @@ def image_loader_handler():
         images[file_name] = CTkImage(light_image = open_image, dark_image = open_image, size = (15, 15))
     
     return images
+
+def icon_image_loader():
+    parent_path = get_parent_path()
+    icon_path = os.path.join(parent_path, "images", "icon.png")
+    icon_image = Image.open(icon_path)
+    icon_photo = ImageTk.PhotoImage(icon_image)
+
+    return icon_photo
