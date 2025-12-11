@@ -7,7 +7,7 @@ import time
 import json
 
 parent_path = get_parent_path()
-vosk_path = os.path.join(parent_path, "vosk-model-small-en-us-0.15")
+vosk_path = os.path.join(parent_path, "vosk-model")
 
 model = Model(vosk_path)
 recogniser = KaldiRecognizer(model, 16000)
