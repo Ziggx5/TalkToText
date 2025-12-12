@@ -2,6 +2,7 @@ from customtkinter import *
 from modules.speech_recognition import start_listening, stop_listening
 from modules.file_loader import image_loader_handler, icon_image_loader
 from modules.copy_logic import copy_to_clipboard
+from modules.load_inputs import load_all_inputs
 from PIL import *
 import os
 
@@ -9,6 +10,8 @@ def start_ui():
     app = CTk()
     images = image_loader_handler()
     icon_photo = icon_image_loader()
+    devices, device_index, short_name = load_all_inputs()
+
     app.geometry("550x430")
     app.title("TalkToText")
     app.resizable(False, False)
@@ -32,5 +35,8 @@ def start_ui():
 
     reset_button = CTkButton(app, text = "Reset", fg_color = "#3d3d3d", corner_radius = 5, image = images["reset.png"], compound = "left", width = 150, height = 30, font = ("TkTextFont", 15), hover_color= "gray", command = lambda: text_box.delete("1.0", "end"))
     reset_button.place(x = 380, y = 130)
+
+    select_microphone = CTkOptionMenu(app, fg_color = "#3d3d3d", corner_radius = 5, width = 150, height = 30, font = ("TkTextFont", 15), values = short_name)
+    select_microphone.place(x = 380, y = 200)
 
     app.mainloop()
