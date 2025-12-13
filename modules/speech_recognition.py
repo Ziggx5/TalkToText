@@ -18,14 +18,12 @@ def start_listening(text_box, start_button, status_label, selected_input_index):
     devices = load_all_inputs()
     mic = pyaudio.PyAudio()
     stream = mic.open(rate = 16000, channels = 1, format = pyaudio.paInt16, input_device_index = selected_input_index, input = True, frames_per_buffer = 8192)
-    print(selected_input_index)
     listening = True
     thread = threading.Thread(target = recognition_handler, args = (text_box, start_button, status_label, selected_input_index,))
     thread.start()
 
 def recognition_handler(text_box, start_button, status_label, selected_input_index):
     start_button.configure(state = "disabled")
-    text_box.delete("0.0", "end")
     status_label.configure(text = "Listening...")
     stream.start_stream()
 
@@ -33,6 +31,7 @@ def recognition_handler(text_box, start_button, status_label, selected_input_ind
         try:
             data = stream.read(4096, exception_on_overflow = False)
             if recogniser.AcceptWaveform(data):
+                text_box.focus_set()
                 text = json.loads(recogniser.Result())
                 text_box.insert("end", f" {text['text']}")
 
@@ -43,6 +42,9 @@ def stop_listening(start_button, status_label):
     global listening, mic, stream
     listening = False
     time.sleep(0.5)
+    stream.stop_stream()
+    stream.close()
+    mic.terminate()
     mic = None
     stream = None
     start_button.configure(state = "enabled")
