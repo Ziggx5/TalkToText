@@ -2,7 +2,7 @@ import threading
 from vosk import Model, KaldiRecognizer
 import pyaudio
 from modules.file_loader import get_parent_path
-from modules.load_inputs import load_all_inputs
+from modules.load_inputs import load_all_inputs, input_return
 import os
 import time
 import json
@@ -33,7 +33,7 @@ def recognition_handler(text_box, start_button, status_label):
             data = stream.read(4096, exception_on_overflow = False)
             if recogniser.AcceptWaveform(data):
                 text = json.loads(recogniser.Result())
-                text_box.insert("end", f" {text["text"]}")
+                text_box.insert("end", f" {text['text']}")
 
         except Exception as e:
             text_box.insert("end", e)
