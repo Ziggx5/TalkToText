@@ -1,17 +1,14 @@
 import threading
 from vosk import Model, KaldiRecognizer
 import pyaudio
-from modules.file_loader import get_parent_path
+from modules.file_loader import get_project_root
 from modules.load_inputs import load_all_inputs
 import os
 import time
 import json
 
-parent_path = get_parent_path()
-vosk_path = os.path.join(parent_path, "vosk-model")
-
-model = Model(vosk_path)
-recogniser = KaldiRecognizer(model, 16000)
+root = get_project_root()
+vosk_path = os.path.join(root, "vosk-model")
 
 def start_listening(text_box, start_button, status_label, selected_input_index):
     global listening, mic, stream
@@ -25,6 +22,8 @@ def start_listening(text_box, start_button, status_label, selected_input_index):
 def recognition_handler(text_box, start_button, status_label, selected_input_index):
     start_button.configure(state = "disabled")
     status_label.configure(text = "Listening...")
+    model = Model(vosk_path)
+    recogniser = KaldiRecognizer(model, 16000)
     stream.start_stream()
 
     while listening:

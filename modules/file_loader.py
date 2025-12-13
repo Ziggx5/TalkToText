@@ -3,19 +3,14 @@ import sys
 from PIL import *
 from customtkinter import *
 
-def get_parent_path():
-    if getattr(sys, "frozen", False):
-        base_path = os.path.dirname(sys.executable)
-    else:
-        base_path = os.path.dirname(os.path.abspath(__file__))
-    
-    parent_path = os.path.dirname(base_path)
-
-    return parent_path
+def get_project_root():
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     
 def image_loader_handler():
-    parent_path = get_parent_path()
-    images_path = os.path.join(parent_path, "images")
+    root = get_project_root()
+    print(root)
+    images_path = os.path.join(root, "images")
+    print(images_path)
     images = {}
     
     for file_name in os.listdir(images_path):
@@ -26,8 +21,8 @@ def image_loader_handler():
     return images
 
 def icon_image_loader():
-    parent_path = get_parent_path()
-    icon_path = os.path.join(parent_path, "images", "icon.png")
+    root = get_project_root()
+    icon_path = os.path.join(root, "images", "icon.png")
     icon_image = Image.open(icon_path)
     icon_photo = ImageTk.PhotoImage(icon_image)
 
