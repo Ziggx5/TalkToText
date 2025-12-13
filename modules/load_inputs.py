@@ -12,6 +12,3 @@ def load_all_inputs():
             devices[device_name] = i
 
     return devices
-
-def input_return(selected_input):
-    return selected_input
