@@ -8,9 +8,7 @@ def get_project_root():
     
 def image_loader_handler():
     root = get_project_root()
-    print(root)
     images_path = os.path.join(root, "images")
-    print(images_path)
     images = {}
     
     for file_name in os.listdir(images_path):
