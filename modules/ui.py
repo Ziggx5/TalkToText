@@ -26,9 +26,8 @@ def start_ui():
 
         return selected_input_index
     
-    
-    text_box = CTkTextbox(app, width = 350, height = 380, font = ("TkTextFont", 15), wrap = "word", fg_color= "#1d1e1e")
-    text_box.place(x = 10, y = 10)
+    text_box = CTkTextbox(app, width = 350, height = 340, font = ("TkTextFont", 15), wrap = "word", fg_color= "#1d1e1e")
+    text_box.place(x = 10, y = 50)
 
     status_label = CTkLabel(app, text = "Idle...", font = ("TkTextFont", 15), text_color = "white")
     status_label.place(x = 10, y = 395)
@@ -53,5 +52,11 @@ def start_ui():
 
     select_microphone = CTkOptionMenu(app, fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, width = 150, height = 30, button_color = "#3d3d3d", button_hover_color = "gray", dynamic_resizing = False, font = ("TkTextFont", 15), values = list(devices.keys()), command = input_return)
     select_microphone.place(x = 380, y = 390)
+
+    file_name_bar = CTkEntry(app, placeholder_text = "Create new...", width = 150, height = 30, fg_color = "#3d3d3d", text_color = "white", corner_radius = 20, border_width = 0)
+    file_name_bar.place(x = 10, y = 10)
+
+    create_file_button = CTkButton(app, text = "", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["add.png"], compound = "right", width = 30, height = 30, font = ("TkTextFont", 15), hover_color= "gray")
+    create_file_button.place(x = 170, y = 10)
     
     app.mainloop()
