@@ -34,7 +34,7 @@ def start_ui():
     status_label.place(x = 10, y = 395)
 
     timer_label = CTkLabel(app, text = "Time:", font = ("TkTextFont", 15), text_color = "white")
-    timer_label.place(x = 280, y = 395)
+    timer_label.place(x = 220, y = 395)
 
     input_label = CTkLabel(app, text = "Input device:", font = ("TkTextFont", 15), text_color = "white")
     input_label.place(x = 380, y = 360)
@@ -48,7 +48,7 @@ def start_ui():
     clear_button = CTkButton(app, text = "Copy", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["copy.png"], compound = "left", width = 150, font = ("TkTextFont", 15), hover_color= "gray", command = lambda: copy_to_clipboard(app, text_box))
     clear_button.place(x = 380, y = 90)
 
-    reset_button = CTkButton(app, text = "Reset", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["reset.png"], compound = "left", width = 150, font = ("TkTextFont", 15), hover_color= "gray", command = lambda: text_box.delete("1.0", "end"))
+    reset_button = CTkButton(app, text = "Reset", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["reset.png"], compound = "left", width = 150, font = ("TkTextFont", 15), hover_color= "gray", command = lambda: (text_box.delete("1.0", "end"), timer_label.configure(text = "Time:")))
     reset_button.place(x = 380, y = 130)
 
     select_microphone = CTkOptionMenu(app, fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, width = 150, height = 30, button_color = "#3d3d3d", button_hover_color = "gray", dynamic_resizing = False, font = ("TkTextFont", 15), values = list(devices.keys()), command = input_return)
