@@ -13,6 +13,7 @@ vosk_path = os.path.join(root, "vosk-model")
 def start_listening(text_box, start_button, status_label, selected_input_index):
     global listening, mic, stream
     devices = load_all_inputs()
+    print(selected_input_index)
     mic = pyaudio.PyAudio()
     stream = mic.open(rate = 16000, channels = 1, format = pyaudio.paInt16, input_device_index = selected_input_index, input = True, frames_per_buffer = 8192)
     listening = True
