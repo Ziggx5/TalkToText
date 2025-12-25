@@ -4,7 +4,7 @@ TalkToText is a simple desktop app, that converts speech to text in real time us
 
 Image from latest version(1.1).
 
-<img width="580" height="483" alt="image" src="https://github.com/user-attachments/assets/c2a4e94b-aa80-4c59-83df-cea74da53d36" />
+<img width="580" height="483" alt="image" src="https://github.com/user-attachments/assets/04e89a35-5f58-4a46-976a-d37bed4342ac" />
 
 ---
 ✨ Features
@@ -13,6 +13,8 @@ Image from latest version(1.1).
 - 🔊 **Input selection**
 - ⏱️ **Elapsed time counter**
 - 📋 **Copy to clipboard**
+- 💾 Save files
+- ✨ Clean and stable UI
 ---
 
 🚀 Installation
