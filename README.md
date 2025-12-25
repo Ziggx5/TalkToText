@@ -2,7 +2,7 @@ Talk-To-Text 🎤
 
 TalkToText is a simple desktop app, that converts speech to text in real time using **Vosk** speech recognition engine and CustomTkinter for the UI.
 
-Image from latest version(1.1).
+Image from latest version(1.2).
 
 <img width="580" height="483" alt="image" src="https://github.com/user-attachments/assets/04e89a35-5f58-4a46-976a-d37bed4342ac" />
 
