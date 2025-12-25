@@ -1,31 +1,47 @@
 from customtkinter import *
 from modules.speech_recognition import start_listening, stop_listening
-from modules.file_loader import image_loader_handler, icon_image_loader
+from modules.file_loader import image_loader_handler, icon_image_loader, save_file_loader
 from modules.copy_logic import copy_to_clipboard
 from modules.load_inputs import load_all_inputs
 from modules.timer import start_timer
-from modules.file_saver import create_file
+from modules.file_saver import save_file, create_file
 from PIL import *
 import os
+import sys
 
 def start_ui():
     app = CTk()
     images = image_loader_handler()
-    icon_photo = icon_image_loader()
+    save_file_loader()
+    icon_path = icon_image_loader()
     devices = load_all_inputs()
     app.geometry("550x430")
     app.title("TalkToText")
-    #app.iconphoto(True, icon_photo)
+    if sys.platform.startswith("win"):
+        app.iconbitmap(icon_path)
+    else:
+        app.iconphoto(True, ImageTk.PhotoImage(file = icon_path))
     app.resizable(False, False)
     app.configure(fg_color = "#323232")
 
     selected_input_index = None
+    current_file = None
 
     def input_return(value):
         nonlocal selected_input_index
         selected_input_index = devices[value]
         print(selected_input_index)
         return selected_input_index
+
+    def on_create_file():
+        nonlocal current_file
+
+        file_name = file_name_bar.get()
+        if not file_name:
+            status_label.configure(text = "Enter file name", text_color = "red")
+            return
+
+        current_file = create_file(file_name, status_label)
     
     text_box = CTkTextbox(app, width = 350, height = 340, font = ("TkTextFont", 15), wrap = "word", fg_color= "#1d1e1e")
     text_box.place(x = 10, y = 50)
@@ -57,7 +73,10 @@ def start_ui():
     file_name_bar = CTkEntry(app, placeholder_text = "Create new...", width = 150, height = 30, fg_color = "#3d3d3d", text_color = "white", corner_radius = 20, border_width = 0)
     file_name_bar.place(x = 10, y = 10)
 
-    create_file_button = CTkButton(app, text = "", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["add.png"], compound = "right", width = 30, height = 30, font = ("TkTextFont", 15), hover_color = "gray", command = lambda: create_file(file_name_bar.get(), status_label))
+    create_file_button = CTkButton(app, text = "", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["add.png"], compound = "right", width = 30, height = 30, font = ("TkTextFont", 15), hover_color = "gray", command = on_create_file)
     create_file_button.place(x = 170, y = 10)
-    
+
+    save_file_button = CTkButton(app, text = "Save", fg_color = "#3d3d3d", text_color = "white", corner_radius = 5, image = images["save.png"], compound = "left", width = 150, font = ("TkTextFont", 15), hover_color = "gray", command = lambda: save_file(current_file, text_box.get("1.0", "end-1c")))
+    save_file_button.place(x = 380, y = 170)
+
     app.mainloop()

@@ -21,7 +21,13 @@ def image_loader_handler():
 def icon_image_loader():
     root = get_project_root()
     icon_path = os.path.join(root, "images", "icon.png")
-    icon_image = Image.open(icon_path)
-    icon_photo = ImageTk.PhotoImage(icon_image)
 
-    return icon_photo
+    return icon_path
+
+def save_file_loader():
+    root = get_project_root()
+    save_file_path = os.path.join(root, "saves")
+    save_file_check = os.path.exists(save_file_path)
+
+    if not save_file_check:
+        os.mkdir(save_file_path)
