@@ -30,7 +30,6 @@ def start_ui():
     def input_return(value):
         nonlocal selected_input_index
         selected_input_index = devices[value]
-        print(selected_input_index)
         return selected_input_index
 
     def on_create_file():

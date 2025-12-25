@@ -22,7 +22,7 @@ def start_listening(text_box, start_button, status_label, selected_input_index):
 
 def recognition_handler(text_box, start_button, status_label, selected_input_index):
     start_button.configure(state = "disabled")
-    status_label.configure(text = "Listening...")
+    status_label.configure(text = "Listening...", text_color = "white")
     model = Model(vosk_path)
     recogniser = KaldiRecognizer(model, 16000)
     stream.start_stream()
@@ -48,4 +48,4 @@ def stop_listening(start_button, status_label):
     mic = None
     stream = None
     start_button.configure(state = "enabled")
-    status_label.configure(text = "Stopped...")
+    status_label.configure(text = "Stopped...", text_color = "white")
