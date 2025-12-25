@@ -30,4 +30,7 @@ def icon_image_loader():
 def save_file_loader():
     root = get_project_root()
     save_file_path = os.path.join(root, "saves")
-    os.makedirs(save_file_path)
+    try:
+        os.makedirs(save_file_path)
+    except FileExistsError as e:
+        print(str(e))
