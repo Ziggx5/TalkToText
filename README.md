@@ -15,8 +15,8 @@ Image from latest version(1.2).
 - 🔊 **Input selection**
 - ⏱️ **Elapsed time counter**
 - 📋 **Copy to clipboard**
-- 💾 Save files
-- ✨ Clean and stable UI
+- 💾 **Save files**
+- ✨ **Clean and stable UI**
 ---
 
 🚀 Installation
