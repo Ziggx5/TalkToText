@@ -40,9 +40,9 @@ Image from latest version(1.2).
 📄 License
 
 This project is licensed under the GPL-3.0 License.
-Copyright © 2025 Maj Sedonja
+Copyright © 2025 Ziggx5
 
 👤 Author
 
-Maj Sedonja
+Ziggx5
 Github: https://github.com/Ziggx5
